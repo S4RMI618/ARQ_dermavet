@@ -2359,7 +2359,7 @@ const INVENT_VACIO = {
   precio:0, vencimiento:"", lote:"", proveedor:"", notas:"",
 };
 
-function InventarioView({ inventario, setInventario, movimientos, setMovimientos }) {
+function InventarioView({ inventario, setInventario, movimientos, setMovimientos, productos, setProductos }) {
   const [busqueda,      setBusqueda]      = useState("");
   const [filtroCateg,   setFiltroCateg]   = useState("Todos");
   const [filtroEstado,  setFiltroEstado]  = useState("Todos");
@@ -2407,10 +2407,11 @@ function InventarioView({ inventario, setInventario, movimientos, setMovimientos
     setModal(null);
   }
   function eliminar(id) {
-    if (window.confirm("¿Eliminar este producto del inventario?"))
-      setInventario(p => p.filter(x => x.id !== id));
-      setProductos(p => p.filter(x => x.id !== id));
+  if (window.confirm("¿Eliminar este producto del inventario?")) {
+    setInventario(p => p.filter(x => x.id !== id));
+    setProductos(p => p.filter(x => x.id !== id));
   }
+}
 
   // ── movimientos ──
   function abrirMovimiento(prod) { setModalMov(prod); setMovForm({ tipo:"Entrada", cantidad:1, motivo:"", responsable:"Admin" }); }
@@ -2867,9 +2868,9 @@ export default function DermaVetApp() {
       case "servicios":    return <ServiciosView   servicios={servicios}     setServicios={setServicios}/>;
       case "productos":    return <ProductosView   productos={productos}     setProductos={setProductos}/>;
       case "inventario": return <InventarioView
-  inventario={inventario}       setInventario={setInventario}
-  movimientos={movimientos}     setMovimientos={setMovimientos}
-  productos={productos}         setProductos={setProductos}/>;
+  inventario={inventario}     setInventario={setInventario}
+  movimientos={movimientos}   setMovimientos={setMovimientos}
+  productos={productos}       setProductos={setProductos}/>;
       case "facturacion":  return <FacturacionView facturas={facturas} setFacturas={setFacturas} clientes={clientes} mascotas={mascotas} servicios={servicios} productos={productos}/>;
       case "reportes":     return <ReportesView facturas={facturas} citas={citas} clientes={clientes} mascotas={mascotas} servicios={servicios}/>;
       case "recordatorios":return <Proximamente icono="🔔" titulo="Recordatorios"/>;
