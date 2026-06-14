@@ -7,6 +7,7 @@
  */
 
 import { useState } from "react";
+import logo from "./assets/logo.png";
 
 // ─────────────────────────────────────────────────────────────────────────────
 // DATOS INICIALES
@@ -136,7 +137,7 @@ const DATOS_INVENTARIO = DATOS_PRODUCTOS.map((p, i) => ({
   actual:      p.actual,
   minimo:      p.minimo,
   precio:      p.precio,
-  vencimiento: ["2028-08-01","2028-06-20","2028-01-15","2027-12-31","2025-05-10"][i] || "",
+  vencimiento: ["2028-08-01","2028-06-20","2028-01-15","202-12-31","2025-05-10"][i] || "",
   lote:        `L-00${p.id}`,
   proveedor:   ["LabVet S.A.","PharmaVet","MedAnimal","NutriPet","LabVet S.A."][i] || "—",
   notas:       p.estado === "Crítico" ? "⚠️ Stock crítico" : "",
@@ -2772,7 +2773,11 @@ function Sidebar({activa,onNavigate}) {
   return (
     <aside style={{width:220,minWidth:220,background:C.verde,display:"flex",flexDirection:"column"}}>
       <div style={{padding:"20px 16px 16px",borderBottom:"1px solid rgba(255,255,255,0.1)",display:"flex",alignItems:"center",gap:10}}>
-        <div style={{width:36,height:36,background:"rgba(255,255,255,0.15)",borderRadius:8,display:"flex",alignItems:"center",justifyContent:"center",fontSize:18}}>🐾</div>
+        <img
+  src={logo}
+  alt="Logo DermaVet"
+  style={{width:36,height:36,borderRadius:8,objectFit:"contain"}}
+/>
         <div>
           <div style={{color:"#fff",fontSize:15,fontWeight:600}}>DermaVet</div>
           <div style={{color:"rgba(255,255,255,0.55)",fontSize:11}}>Salud y bienestar animal</div>
