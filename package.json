@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://s4rmi618.github.io/AQR_dermavet_REPO",
+  "homepage": "https://s4rmi618.github.io/ARQ_dermavet",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
